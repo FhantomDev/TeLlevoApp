@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Recuperar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-input
+      type="email"
+      fill="solid"
+      label="Correo"
+      labelPlacement="floating"
+      helperText="Ingrese un correo valido"
+      errorText="Correo invalido"
+      ngModel
+      required 
+      email
+    ></ion-input>
+
+    <div id="boton">
+      <ion-button id="boton">Enviar</ion-button>
+    </div>
+  </div>
+</ion-content>
