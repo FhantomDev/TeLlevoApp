@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>TeLLevoApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="logo">
+    <ion-img src="assets/Logo_duoc.png" alt="DuocUC"></ion-img>
+  </div>
+
+  <div id="bienvenida">
+    <ion-text>
+      <h1>Bienvenido estudiante</h1>
+    </ion-text>
+  </div>
+
+  <div class="contenido">
+    <div id="container">
+      <ion-input
+        type="email"
+        fill="solid"
+        label="Correo"
+        labelPlacement="floating"
+        helperText="Ingrese un correo valido"
+        errorText="Correo invalido"
+        ngModel
+        required 
+        email
+      ></ion-input>
+      <ion-input
+        type="password"
+        fill="solid"
+        label="Contraseña"
+        labelPlacement="floating"
+        ngModel
+        required
+      ></ion-input><br>
+      <ion-text color="primary" routerLink="/recuperar">Recuperar contraseña</ion-text><br>
+    </div>
+  </div>
+
+  <div id="boton">
+    <ion-button>Entrar</ion-button>
+  </div>
+
+  <div id="registro">
+    <ion-text>¿No estas registrado? </ion-text> <ion-text color="primary" routerLink="/registro">Registrate</ion-text>
+  </div>
+
+</ion-content>
