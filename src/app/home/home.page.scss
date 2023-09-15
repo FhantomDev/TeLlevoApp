@@ -1,34 +1,59 @@
-#logo {
+.principal {
+  margin: 0px 15px;
+  display: flex;
+  justify-content: center;
+}
+
+#planificar {
+  display: flex;
+  background-color:lightgray;
+  width: 140px;
+  padding: 20px;
+  margin-right: 20px;
+  flex-direction: column;
   align-items: center;
-  margin: 10px;
+  border-radius: 10%;
+
 }
 
-#bienvenida {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 30%;
+#buscar {
+  display: flex;
+  background-color: lightgray;
+  width: 140px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10%;
+
 }
 
-#container {
+.mensaje {
   text-align: start;
-  margin: 10px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  margin: 50px 20px 50px 20px;
+  font-size: 18px;
 }
 
-#container a {
-  text-decoration: none;
+ion-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
-#registro {
+#titulo-viajes {
   text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 70%;
+  font-size: 18px;
+  background-color: lightgrey;
+  margin: 50px 20px 20px 20px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#viajes {
+  background-color: lightcyan;
+  margin: 0px 20px;
+}
+
+#boton {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }

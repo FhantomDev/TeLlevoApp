@@ -1,13 +1,39 @@
-.contenido {
-  background-color: aqua;
+#logo {
+  padding: 10px;
+}
+
+.mensaje {
+  text-align: center;
+  margin: 50px 20px 50px 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.principal {
+  margin: 15px;
+}
+
+.contenedor-principal {
+  background-color: lightgrey;
+  border-radius: 5%;
+  margin: 0px 10px;
+  padding: 10px;
 }
 
 #boton {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
+}
+
+#error {
+  text-align: center;
+  font-size: 18px;
+  margin: 50px 20px 50px 20px;
+  background-color: lightcoral;
 }
 
 #registro {
-  margin-top: 5px;
+  margin-top: 10px;
   text-align: center;
 }

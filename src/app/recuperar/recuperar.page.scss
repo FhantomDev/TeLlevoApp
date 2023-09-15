@@ -1,12 +1,22 @@
-#container {
+.principal {
+  margin: 0px 15px;
+}
+
+#logo {
+  margin: 15px;
+}
+
+.mensaje {
   text-align: start;
-  justify-content: center;
-  margin: 10px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  margin: 50px 20px 50px 20px;
+  font-size: 18px;
+}
+
+#error {
+  text-align: center;
+  font-size: 18px;
+  margin: 50px 20px 50px 20px;
+  background-color: lightcoral;
 }
 
 #boton {

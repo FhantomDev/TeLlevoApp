@@ -10,21 +10,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div id="container">
-    <ion-input
-      type="email"
-      fill="solid"
-      label="Correo"
-      labelPlacement="floating"
-      helperText="Ingrese un correo valido"
-      errorText="Correo invalido"
-      ngModel
-      required 
-      email
-    ></ion-input>
+  <div id="logo">
+    <ion-img src="assets/Logo_duoc.png" alt="DuocUC"></ion-img>
+  </div>
+
+  <div class="mensaje">
+    <ion-text>Ingrese su correo electronico para cambiar la contraseña</ion-text>
+  </div>
+
+  <div class="principal">
+    <ion-input [(ngModel)]="user.usuario" fill="solid" label="Correo electronico" labelPlacement="floating"
+      helperText="Ingrese un correo valido" errorText="Correo invalido" ngModel required email></ion-input>
 
     <div id="boton">
-      <ion-button id="boton">Enviar</ion-button>
+      <ion-button (click)="recuperar()">Enviar</ion-button>
+    </div>
+
+    
+    <div id="error">
+      <ion-text>{{mensaje}}</ion-text>
     </div>
   </div>
 </ion-content>
