@@ -6,6 +6,7 @@ import { Router, NavigationExtras } from '@angular/router';
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
+
 export class RegistroPage implements OnInit {
 
   constructor(private router: Router) { }

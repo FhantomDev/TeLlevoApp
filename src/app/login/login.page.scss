@@ -13,17 +13,16 @@
   margin: 15px;
 }
 
-.contenedor-principal {
-  background-color: lightgrey;
-  border-radius: 5%;
-  margin: 0px 10px;
-  padding: 10px;
+#contenedor {
+  border: 1px solid black;
+  margin: 20px;
+  border-radius: 10px;
 }
 
 #boton {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 #error {

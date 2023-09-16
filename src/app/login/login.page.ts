@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
         this.mensaje = "El correo electrónico no es válido";
       }
     } else {
-      this.mensaje = "Correo o contraseña erronea";
+      this.mensaje = "Correo o contraseña invalida";
     }
   }
 }

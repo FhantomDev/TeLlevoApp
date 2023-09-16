@@ -17,16 +17,18 @@
   <div class="mensaje">
     <ion-text>Ingrese su correo electronico para cambiar la contraseña</ion-text>
   </div>
-
-  <div class="principal">
-    <ion-input [(ngModel)]="user.usuario" fill="solid" label="Correo electronico" labelPlacement="floating"
-      helperText="Ingrese un correo valido" errorText="Correo invalido" ngModel required email></ion-input>
+  
+  <div id="contenedor">
+    <div class="principal">
+      <ion-input [(ngModel)]="user.usuario" fill="solid" label="Correo electronico" labelPlacement="floating"
+        helperText="Ingrese un correo valido" errorText="Correo invalido" ngModel required email></ion-input>
+    </div>
 
     <div id="boton">
       <ion-button (click)="recuperar()">Enviar</ion-button>
     </div>
 
-    
+
     <div id="error">
       <ion-text>{{mensaje}}</ion-text>
     </div>
