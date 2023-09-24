@@ -3,7 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { IonAvatar,IonImg } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 import type { Animation } from '@ionic/angular';
-
+import { AutenticacionService } from '../Servicios/autenticacion.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +14,9 @@ export class LoginPage implements OnInit {
   @ViewChild(IonImg,{read:ElementRef}) logo!:ElementRef<HTMLIonImgElement>;
 
   private animation!:Animation;
-  constructor(private router: Router, private animationCtrl:AnimationController) { }
+  constructor(private auth: AutenticacionService, private router: Router, private animationCtrl:AnimationController) { }
   public mensaje = ""
+  
   ngOnInit() {
   }
 
@@ -41,10 +42,8 @@ export class LoginPage implements OnInit {
   }
   
   iniciarSesion() {
-    const validarEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (this.user.usuario != "" && this.user.password != "") {
-      if (validarEmail.test(this.user.usuario)) {
+    this.auth.login(this.user.usuario, this.user.password)
+      if (this.auth.activo) {
         let navigationExtras: NavigationExtras = {
           state: { user: this.user }
         }
@@ -52,8 +51,5 @@ export class LoginPage implements OnInit {
       } else {
         this.mensaje = "El correo electrónico no es válido";
       }
-    } else {
-      this.mensaje = "Correo o contraseña invalida";
-    }
   }
 }
