@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { AutenticacionService } from '../Servicios/autenticacion.service'
 
 @Component({
   selector: 'app-registro',
@@ -9,34 +10,24 @@ import { Router, NavigationExtras } from '@angular/router';
 
 export class RegistroPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AutenticacionService) { }
   public mensaje = ""
 
   ngOnInit() {
   }
 
-  user = {
-    usuario: "",
+  usuarios = {
+    user: "",
     nombre: "",
     apellido: "",
     password: ""
   }
 
+  //Falta agregar los campos nombre y apellido, la validacion y mensajes
   registro() {
     const validarEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (this.user.usuario != "" && this.user.password != "" && this.user.nombre != "" && this.user.apellido != "") {
-      if (validarEmail.test(this.user.usuario)) {
-        let navigationExtras: NavigationExtras = {
-          state: { user: this.user }
-        }
-        this.router.navigate(['/login'], navigationExtras);
-      } else {
-        this.mensaje = "El correo electrónico no es válido";
-      }
-    } else {
-      this.mensaje = "Dato invalido en el formulario de registro";
-    }
+    this.mensaje = "Registro Exitoso"
+    this.auth.registro(this.usuarios.user, this.usuarios.password);
   }
 }
 

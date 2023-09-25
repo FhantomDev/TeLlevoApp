@@ -36,20 +36,21 @@ export class LoginPage implements OnInit {
     this.animation.play();
   }
 
-  user = {
-    usuario: "",
+  usuarios = {
+    user: "",
     password: ""
   }
   
   iniciarSesion() {
-    this.auth.login(this.user.usuario, this.user.password)
+    this.auth.login(this.usuarios.user, this.usuarios.password).then(() => {
       if (this.auth.activo) {
         let navigationExtras: NavigationExtras = {
-          state: { user: this.user }
+          state: { usuario: this.usuarios }
         }
         this.router.navigate(['/home'], navigationExtras);
       } else {
-        this.mensaje = "El correo electrónico no es válido";
+        this.mensaje = "Debe ingresar sus credenciales";
       }
+    });
   }
 }

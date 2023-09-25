@@ -10,8 +10,8 @@ export class HomePage {
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute) {}
 
-  public user = {
-    usuario: "",
+  public usuario = {
+    user: "",
     password: ""
   }
 
@@ -19,8 +19,8 @@ export class HomePage {
     this.activatedRouter.queryParams.subscribe(() => {
       let state = this.router.getCurrentNavigation()?.extras.state;
       if (state) {
-        this.user.usuario = state['user'].usuario;
-        this.user.password = state['user'].password;
+        this.usuario.user = state['usuario'].user;
+        this.usuario.password = state['usuario'].password;
       }
     })
   }
