@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-perfil',
@@ -10,6 +12,7 @@ export class PerfilPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
 
+  }
 }
+

@@ -31,8 +31,24 @@ const routes: Routes = [
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
+    path: 'crear-viaje',
+    loadChildren: () => import('./crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
+  },
+  {
+    path: 'forma-pago',
+    loadChildren: () => import('./forma-pago/forma-pago.module').then( m => m.FormaPagoPageModule)
+  },
+  {
+    path: 'pagar',
+    loadChildren: () => import('./pagar/pagar.module').then( m => m.PagarPageModule)
+  },
+  {
+    path: 'buscar-viaje',
+    loadChildren: () => import('./buscar-viaje/buscar-viaje.module').then( m => m.BuscarViajePageModule)
   },
 ];
 
