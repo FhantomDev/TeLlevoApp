@@ -17,7 +17,7 @@ export class RegistroPage implements OnInit {
   }
 
   usuarios = {
-    user: "",
+    username: "",
     nombre: "",
     apellido: "",
     password: ""
@@ -27,7 +27,7 @@ export class RegistroPage implements OnInit {
   registro() {
     const validarEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     this.mensaje = "Registro Exitoso"
-    this.auth.registro(this.usuarios.user, this.usuarios.password);
+    this.auth.registro(this.usuarios.username, this.usuarios.password, this.usuarios.nombre, this.usuarios.apellido);
   }
 }
 

@@ -10,16 +10,16 @@ import { AutenticacionService } from './Servicios/autenticacion.service';
 })
 export class AppComponent {
   constructor(private storage: Storage, private platform: Platform, private auth: AutenticacionService) {
-    this.iniciarStorage();
-  }
+this.iniciarStorage();
+}
 
-  iniciarStorage() {
+   iniciarStorage() {
     this.platform.ready().then(async () => {
       await this.storage.create();
     })
   }
 
-  loguot() {
-    this.auth.logout();
+  cerrarSesion() {
+    this.auth.cerrarSesion();
   }
 }

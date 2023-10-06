@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { AutenticacionService } from '../Servicios/autenticacion.service';
+import { PersistenciaService } from '../Servicios/persistencia.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,12 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  constructor(private router: Router, private activatedRouter: ActivatedRoute, private auth: AutenticacionService,
+    private persistencia: PersistenciaService) {}
 
-  constructor(private router: Router, private activatedRouter: ActivatedRoute) {}
+  //Declarar las variables indicando que no seran nulas
+  username!: string | null;
+  nombreCompleto!: string;
 
   public usuario = {
     user: "",
@@ -16,12 +22,14 @@ export class HomePage {
   }
 
   ngOnInit() {
-    this.activatedRouter.queryParams.subscribe(() => {
-      let state = this.router.getCurrentNavigation()?.extras.state;
-      if (state) {
-        this.usuario.user = state['usuario'].user;
-        this.usuario.password = state['usuario'].password;
-      }
-    })
+    //Usamos la función al cargar la pagina
+    this.recuperarDatos();
   }
+  
+  //Función donde se recupera el username y se la pasa a la función para recuperar los datos
+  async recuperarDatos() {
+    this.username = localStorage.getItem("username");
+    this.nombreCompleto = await this.persistencia.recuperarDatos(this.username);
+  }
+
 }

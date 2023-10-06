@@ -4,6 +4,7 @@ import { IonAvatar,IonImg } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 import type { Animation } from '@ionic/angular';
 import { AutenticacionService } from '../Servicios/autenticacion.service';
+import { PersistenciaService } from '../Servicios/persistencia.service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,19 @@ export class LoginPage implements OnInit {
   @ViewChild(IonImg,{read:ElementRef}) logo!:ElementRef<HTMLIonImgElement>;
 
   private animation!:Animation;
-  constructor(private auth: AutenticacionService, private router: Router, private animationCtrl:AnimationController) { }
+  constructor(private persistencia: PersistenciaService, private auth: AutenticacionService, private router: Router, private animationCtrl:AnimationController) {
+
+    const username = localStorage.getItem('username');
+    if (username) {
+      this.persistencia.inicioAutomatico(username);
+    }
+
+   }
+   
   public mensaje = ""
   
   ngOnInit() {
+    
   }
 
   ngAfterViewInit() {
@@ -37,20 +47,20 @@ export class LoginPage implements OnInit {
   }
 
   usuarios = {
-    user: "",
+    username: "",
     password: ""
   }
+
   
   iniciarSesion() {
-    this.auth.login(this.usuarios.user, this.usuarios.password).then(() => {
+    this.auth.login(this.usuarios.username, this.usuarios.password).then(() => {
       if (this.auth.activo) {
-        let navigationExtras: NavigationExtras = {
-          state: { usuario: this.usuarios }
-        }
-        this.router.navigate(['/home'], navigationExtras);
+        //Guardar los datos en cache
+        this.router.navigate(['/home']);
       } else {
         this.mensaje = "Debe ingresar sus credenciales";
       }
     });
   }
+
 }

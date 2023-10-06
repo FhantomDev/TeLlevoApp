@@ -10,8 +10,8 @@
         <ion-menu-toggle>
           <ion-item routerLink="/home" routerDirection="root"><ion-icon name="home"></ion-icon>Inicio</ion-item>
           <ion-item routerLink="/perfil"><ion-icon name="person"></ion-icon>Perfil</ion-item>
-          <ion-item><ion-icon name="card"></ion-icon>Forma de pago</ion-item>
-          <ion-item (click)="loguot()"><ion-icon name="log-out"></ion-icon>Cerrar sesión</ion-item>
+          <ion-item routerLink="/forma-pago"><ion-icon name="card"></ion-icon>Forma de pago</ion-item>
+          <ion-item (click)="cerrarSesion()"><ion-icon name="log-out"></ion-icon>Cerrar sesión</ion-item>
         </ion-menu-toggle>
       </ion-list>
     </ion-content>

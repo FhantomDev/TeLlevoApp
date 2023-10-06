@@ -35,10 +35,6 @@ const routes: Routes = [
     loadChildren: () => import('./crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule)
   },
   {
-    path: '**',
-    loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
-  },
-  {
     path: 'forma-pago',
     loadChildren: () => import('./forma-pago/forma-pago.module').then( m => m.FormaPagoPageModule)
   },
@@ -49,6 +45,10 @@ const routes: Routes = [
   {
     path: 'buscar-viaje',
     loadChildren: () => import('./buscar-viaje/buscar-viaje.module').then( m => m.BuscarViajePageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
   },
 ];
 
