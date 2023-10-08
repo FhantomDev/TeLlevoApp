@@ -1,10 +1,11 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { IonAvatar,IonImg } from '@ionic/angular';
+import { IonAvatar, IonImg } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 import type { Animation } from '@ionic/angular';
 import { AutenticacionService } from '../Servicios/autenticacion.service';
 import { PersistenciaService } from '../Servicios/persistencia.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,22 +13,23 @@ import { PersistenciaService } from '../Servicios/persistencia.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  @ViewChild(IonImg,{read:ElementRef}) logo!:ElementRef<HTMLIonImgElement>;
+  @ViewChild(IonImg, { read: ElementRef }) logo!: ElementRef<HTMLIonImgElement>;
 
-  private animation!:Animation;
-  constructor(private persistencia: PersistenciaService, private auth: AutenticacionService, private router: Router, private animationCtrl:AnimationController) {
+  private animation!: Animation;
+  constructor(private persistencia: PersistenciaService, private auth: AutenticacionService, private router: Router,
+    private animationCtrl: AnimationController, private alertController: AlertController) {
 
     const username = localStorage.getItem('username');
     if (username) {
       this.persistencia.inicioAutomatico(username);
     }
 
-   }
-   
+  }
+
   public mensaje = ""
-  
+
   ngOnInit() {
-    
+
   }
 
   ngAfterViewInit() {
@@ -51,14 +53,39 @@ export class LoginPage implements OnInit {
     password: ""
   }
 
-  
+  async alertaVacio() {
+    const alerta = await this.alertController.create({
+      header: 'Aviso',
+      subHeader: 'Ingrese datos en los campos',
+      //message: 'This is an alert!',
+      buttons: ['OK'],
+    });
+
+    await alerta.present();
+  }
+
+  async alertaNoEncontrado() {
+    const alerta = await this.alertController.create({
+      header: 'Aviso',
+      subHeader: 'Usuario no encontrado',
+      //message: 'This is an alert!',
+      buttons: ['OK'],
+    });
+
+    await alerta.present();
+  }
+
+  //Si es true redirige a home
+  //Si los input estan vacios avisa de que debe ingresar datos
+  //Si es falso avisa de que el usuario no existe
   iniciarSesion() {
     this.auth.login(this.usuarios.username, this.usuarios.password).then(() => {
       if (this.auth.activo) {
-        //Guardar los datos en cache
         this.router.navigate(['/home']);
+      } else if (this.usuarios.username === "" || this.usuarios.password === "") {
+        this.alertaVacio();
       } else {
-        this.mensaje = "Debe ingresar sus credenciales";
+        this.alertaNoEncontrado();
       }
     });
   }

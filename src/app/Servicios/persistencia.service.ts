@@ -34,6 +34,7 @@ export class PersistenciaService {
       const users: usuariosBase[] = (await this.auth.llamarBaseDatos().get('users')) || [];
       const usuarioExiste = users.find((us: usuariosBase) => us.username === username);
       const nombreCompleto = usuarioExiste?.nombre + " " + usuarioExiste?.apellido;
-      return nombreCompleto;
+      const userName = usuarioExiste?.username;
+      return {nombreCompleto, userName};
     }
 }

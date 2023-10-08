@@ -29,7 +29,7 @@ export class HomePage {
   //Función donde se recupera el username y se la pasa a la función para recuperar los datos
   async recuperarDatos() {
     this.username = localStorage.getItem("username");
-    this.nombreCompleto = await this.persistencia.recuperarDatos(this.username);
+    this.nombreCompleto = (await this.persistencia.recuperarDatos(this.username)).nombreCompleto;
   }
 
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular'
 import { Router } from '@angular/router';
 
- interface usuariosBase {
+interface usuariosBase {
   username: string;
   password: string;
   nombre: string;
@@ -53,10 +53,11 @@ export class AutenticacionService {
       //Guardar el username en el local storage para la percistencia
       localStorage.setItem('username', username);
       return true;
-    }
-    this.activo = false;
-    return false;
+    } else {
+      this.activo = false;
+      return false;
   }
+}
 
   //Función de cerrar sesión
   cerrarSesion() {
@@ -70,4 +71,14 @@ export class AutenticacionService {
     return this.baseDatos;
   }
 
+  async recuperar(username: string): Promise<boolean> {
+    const users: usuariosBase[] = (await this.baseDatos.get('users')) || [];
+    const usuarioExiste = users.find((us: usuariosBase) => us.username === username);
+    if (usuarioExiste) {
+      this.activo = true;
+      return true;
+    }
+    this.activo = false;
+    return false;
+  }
 }

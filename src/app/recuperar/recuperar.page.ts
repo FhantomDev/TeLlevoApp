@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { AutenticacionService } from '../Servicios/autenticacion.service';
 
 @Component({
   selector: 'app-recuperar',
@@ -8,30 +10,49 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class RecuperarPage implements OnInit {
 
-  constructor(private router: Router) { }
-  public mensaje = ""
+  constructor(private router: Router, private alertController: AlertController, private auth: AutenticacionService) { }
 
   ngOnInit() {
   }
 
-  user = {
-    usuario: ""
+  usuario = {
+    username: ""
   }
 
+  async alertaVacio() {
+    const alert = await this.alertController.create({
+      header: 'Aviso',
+      subHeader: 'Ingrese su correo en el campo',
+      //message: 'This is an alert!',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
+  async alertaNoEncontrado() {
+    const alerta = await this.alertController.create({
+      header: 'Aviso',
+      subHeader: 'Usuario no encontrado',
+      //message: 'This is an alert!',
+      buttons: ['OK'],
+    });
+
+    await alerta.present();
+  }
+
+  //Si es true redirige a home
+  //Si los input estan vacios avisa de que debe ingresar datos
+  //Si es falso avisa de que el usuario no existe
   recuperar() {
-    const validarEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (this.user.usuario != "") {
-      if (validarEmail.test(this.user.usuario)) {
-        let navigationExtras: NavigationExtras = {
-          state: { user: this.user }
-        }
-        this.router.navigate(['/login'], navigationExtras);
+    this.auth.recuperar(this.usuario.username).then(() => {
+      if (this.auth.activo) {
+        this.router.navigate(['/login']);
+      } else if (this.usuario.username === "") {
+        this.alertaVacio()
       } else {
-        this.mensaje = "El correo electrónico no es válido";
+        this.alertaNoEncontrado();
       }
-    } else {
-      this.mensaje = "Dato invalido";
-    }
+    })
   }
+
 }

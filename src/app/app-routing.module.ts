@@ -28,23 +28,28 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'crear-viaje',
-    loadChildren: () => import('./crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule)
+    loadChildren: () => import('./crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'forma-pago',
-    loadChildren: () => import('./forma-pago/forma-pago.module').then( m => m.FormaPagoPageModule)
+    loadChildren: () => import('./forma-pago/forma-pago.module').then( m => m.FormaPagoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'pagar',
-    loadChildren: () => import('./pagar/pagar.module').then( m => m.PagarPageModule)
+    loadChildren: () => import('./pagar/pagar.module').then( m => m.PagarPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'buscar-viaje',
-    loadChildren: () => import('./buscar-viaje/buscar-viaje.module').then( m => m.BuscarViajePageModule)
+    loadChildren: () => import('./buscar-viaje/buscar-viaje.module').then( m => m.BuscarViajePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

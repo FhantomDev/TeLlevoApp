@@ -11,26 +11,27 @@
   <div class="mensaje">
     <ion-text>Bienvenido estudiante</ion-text>
   </div>
-<div id="contenedor">
-  <div class="principal">
-    <ion-input [(ngModel)]="usuarios.username" fill="solid" label="Correo" labelPlacement="floating" helperText="correo@dominio.cl"
-      errorText="Correo invalido" ngModel required email></ion-input>
-    <ion-input [(ngModel)]="usuarios.password" type="password" fill="solid" label="Contraseña" labelPlacement="floating" ngModel 
-    helperText="Max 8 caracteres" errorText="Contraseña invalida" required></ion-input><br>
-    <ion-text color="primary" routerLink="/recuperar">Recuperar contraseña</ion-text><br>
-  </div>
+  <div id="contenedor">
+    <div class="principal">
+      <ion-input [(ngModel)]="usuarios.username" fill="solid" label="Correo" labelPlacement="floating"
+        helperText="correo@dominio.cl" errorText="Correo invalido" ngModel required email></ion-input>
+      <ion-input [(ngModel)]="usuarios.password" type="password" fill="solid" label="Contraseña"
+        labelPlacement="floating" ngModel helperText="Max 8 caracteres" errorText="Contraseña invalida"
+        required></ion-input><br>
+      <ion-text color="primary" routerLink="/recuperar">Recuperar contraseña</ion-text><br>
+    </div>
 
 
-  <div id="registro">
-    <ion-text>¿No estas registrado? </ion-text> <ion-text color="primary" routerLink="/registro">Registrate</ion-text>
-  </div>
+    <div id="registro">
+      <ion-text>¿No estas registrado? </ion-text> <ion-text color="primary" routerLink="/registro">Registrate</ion-text>
+    </div>
 
-  <div id="boton">
-    <ion-button (click)="iniciarSesion()">Iniciar sesión</ion-button>
+    <div id="boton">
+      <ion-button (click)="iniciarSesion()">Iniciar sesión</ion-button>
+    </div>
+
+    <div id="error">
+      <ion-text>{{mensaje}}</ion-text>
+    </div>
   </div>
-  
-  <div id="error">
-    <ion-text>{{mensaje}}</ion-text>
-  </div>
-</div>
 </ion-content>
