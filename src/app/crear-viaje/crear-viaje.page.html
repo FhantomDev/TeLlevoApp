@@ -12,21 +12,23 @@
 <ion-content [fullscreen]="true">
   <div id="contenedor">
     <div>
-      <ion-select [(ngModel)]="viajes.cantidadPasajeros" label="Cantidad de pasajeros" placeholder="opciones...">
+      <ion-select [(ngModel)]="viajes.cantidadPasajeros" label="Cantidad de pasajeros" labelPlacement="floating"
+        placeholder="elija..." ngModel required cancelText="Cancelar" okText="Aceptar" fill="solid">
         <ion-select-option value="1">1 pasajero</ion-select-option>
         <ion-select-option value="2">2 pasajeros</ion-select-option>
         <ion-select-option value="3">3 pasajeros</ion-select-option>
+        <ion-select-option value="4">4 pasajeros</ion-select-option>
       </ion-select>
       <ion-input [(ngModel)]="viajes.destino" type="text" fill="solid" label="Destino" labelPlacement="floating"
         errorText="Dato invalido" ngModel required></ion-input>
-      <ion-input [(ngModel)]="viajes.horaSalida" type="text" fill="solid" label="Hora de salida"
+      <ion-input [(ngModel)]="viajes.horaSalida" type="time" fill="solid" label="Hora de salida"
         labelPlacement="floating" errorText="Dato invalido" ngModel required></ion-input>
-      <ion-input [(ngModel)]="viajes.precio" type="text" fill="solid" label="Precio del viaje" labelPlacement="floating"
-        errorText="Dato invalido" ngModel required></ion-input>
+      <ion-input [(ngModel)]="viajes.precio" type="number" fill="solid" label="Precio del viaje"
+        labelPlacement="floating" errorText="Dato invalido" ngModel required></ion-input>
 
-        <div id="boton">
-          <ion-button>Crear viaje</ion-button>
-        </div>
+      <div id="boton">
+        <ion-button>Crear viaje</ion-button>
+      </div>
     </div>
   </div>
 </ion-content>

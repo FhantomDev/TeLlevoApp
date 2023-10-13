@@ -30,7 +30,6 @@ export class AutenticacionService {
   public activo!: Boolean;
 
   //Funcion de registro
-  //Falta mejorar la validación
   async registro(username: string, password: string, nombre: string, apellido: string) {
     const users = await this.baseDatos?.get('users') || [];
     const existe = users.find((us: usuariosBase) => us.username === username && us.password === password);
@@ -67,6 +66,7 @@ export class AutenticacionService {
     localStorage.removeItem("username");
   }
 
+  //Para usar la base desde otros archivos
   llamarBaseDatos(): Storage {
     return this.baseDatos;
   }

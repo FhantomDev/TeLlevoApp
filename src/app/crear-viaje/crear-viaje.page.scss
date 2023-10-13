@@ -17,3 +17,9 @@
   justify-content: center;
   margin-top: 10px;
 }
+
+ion-select {
+  width: 90%;
+  margin: auto;
+  border-bottom: var(--border-width) var(--border-style) var(--border-color);
+}
