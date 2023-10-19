@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegistroViajeService, viajesBase } from '../Servicios/registro-viaje.service';
 
 @Component({
   selector: 'app-buscar-viaje',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buscar-viaje.page.scss'],
 })
 export class BuscarViajePage implements OnInit {
+  
+  listaDeViajes: viajesBase[] = []; // Arreglo para almacenar la lista de viajes
 
-  constructor() { }
+  constructor(private registroViajes: RegistroViajeService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.listaDeViajes = await this.registroViajes.listarViajes();
   }
 
 }

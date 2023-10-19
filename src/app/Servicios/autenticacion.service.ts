@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular'
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 interface usuariosBase {
   username: string;
   password: string;
   nombre: string;
   apellido: string;
+}
+
+interface viajesBase {
+  username: string | null;
+  pasajeros: string;
+  destino: string;
+  hora: string;
+  precio: string;
 }
 
 
@@ -16,7 +25,7 @@ interface usuariosBase {
 export class AutenticacionService {
   public baseDatos!: Storage;
 
-  constructor(private storage: Storage, private router: Router) {
+  constructor(private storage: Storage, private router: Router, private alertController: AlertController) {
     this.init()
   }
 
@@ -55,8 +64,8 @@ export class AutenticacionService {
     } else {
       this.activo = false;
       return false;
+    }
   }
-}
 
   //Función de cerrar sesión
   cerrarSesion() {
@@ -81,4 +90,5 @@ export class AutenticacionService {
     this.activo = false;
     return false;
   }
+  
 }

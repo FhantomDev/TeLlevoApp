@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AutenticacionService } from '../Servicios/autenticacion.service'
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -10,7 +11,7 @@ import { AutenticacionService } from '../Servicios/autenticacion.service'
 
 export class RegistroPage implements OnInit {
 
-  constructor(private router: Router, private auth: AutenticacionService) { }
+  constructor(private router: Router, private auth: AutenticacionService, private alertController: AlertController) { }
   public mensaje = ""
 
   ngOnInit() {
@@ -23,11 +24,26 @@ export class RegistroPage implements OnInit {
     password: ""
   }
 
+  async alertaVacio() {
+    const alerta = await this.alertController.create({
+      header: 'Aviso',
+      subHeader: 'Ingrese datos en los campos',
+      //message: 'This is an alert!',
+      buttons: ['OK'],
+    });
+
+    await alerta.present();
+  }
+
   //Falta agregar los campos nombre y apellido, la validacion y mensajes
   registro() {
     const validarEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    this.mensaje = "Registro Exitoso"
-    this.auth.registro(this.usuarios.username, this.usuarios.password, this.usuarios.nombre, this.usuarios.apellido);
+    if (this.usuarios.username === "" || this.usuarios.nombre === "" || this.usuarios.apellido === "" || this.usuarios.password === ""){
+      this.alertaVacio();
+    } else {
+      this.auth.registro(this.usuarios.username, this.usuarios.password, this.usuarios.nombre, this.usuarios.apellido);
+      this.router.navigate(['/registro-exito'], { queryParams: { mensaje: '¡Registro exitoso!' } });
+    }
   }
 }
 

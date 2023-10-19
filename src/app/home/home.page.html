@@ -12,19 +12,19 @@
 
 <ion-content [fullscreen]="true">
 <div id="contenedor">
-  <div class="mensaje">
+  <div id="mensaje">
     <ion-text>Bienvenido: {{nombreCompleto}}</ion-text>
   </div>
 </div>
 
   <div class="principal">
-    <div id="planificar" routerLink="/crear-viaje">
+    <div id="crear" routerLink="/crear-viaje">
       <ion-icon name="car"></ion-icon>
-      <ion-text>Planificar viaje</ion-text>
+      <ion-text>Crear viaje</ion-text>
     </div>
-    <div id="buscar">
+    <div id="ver" routerLink="/buscar-viaje">
       <ion-icon name="man"></ion-icon>
-      <ion-text>Buscar viaje</ion-text>
+      <ion-text>Ver viajes disponibles</ion-text>
     </div>
   </div>
 
@@ -49,5 +49,4 @@
       <span>Ayuda</span>
     </button>
   </mat-menu>
-  
 </ion-content>

@@ -52,6 +52,10 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'registro-exito',
+    loadChildren: () => import('./registro-exito/registro-exito.module').then( m => m.RegistroExitoPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
   },

@@ -12,9 +12,8 @@ export class PerfilPage implements OnInit {
 
   constructor(private persistencia: PersistenciaService) { }
 
-  username! :string | null;
-  nombreCompleto! : string;
-  userName! : string | undefined;
+  username!: string | null;
+  nombreCompleto!: string;
 
   ngOnInit() {
     this.recuperarDatos();
@@ -23,7 +22,6 @@ export class PerfilPage implements OnInit {
   async recuperarDatos() {
     this.username = localStorage.getItem("username");
     this.nombreCompleto = (await this.persistencia.recuperarDatos(this.username)).nombreCompleto;
-    this.userName = (await this.persistencia.recuperarDatos(this.username)).userName;
   }
 
 }

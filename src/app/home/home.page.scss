@@ -4,38 +4,37 @@
 }
 
 #contenedor {
-  border: 1px solid black;
+  border: 1px solid var( --ion-color-light-contrast);
   margin: 20px;
   border-radius: 10px;
   padding: 25px;
 }
 
-#planificar {
+#mensaje {
+  font-size: 18px;
+}
+
+#crear {
   display: flex;
-  background-color:lightgray;
+  background-color: var(--ion-color-medium);
   width: 140px;
   padding: 20px;
   margin-right: 20px;
   flex-direction: column;
   align-items: center;
   border-radius: 10%;
-
+  text-align: center;
 }
 
-#buscar {
+#ver {
   display: flex;
-  background-color: lightgray;
+  background-color: var(--ion-color-medium);
   width: 140px;
   padding: 20px;
   flex-direction: column;
   align-items: center;
   border-radius: 10%;
-
-}
-
-.mensaje {
-  text-align: start;
-  font-size: 18px;
+  text-align: center;
 }
 
 ion-icon {
@@ -46,14 +45,18 @@ ion-icon {
 #titulo-viajes {
   text-align: center;
   font-size: 18px;
-  background-color: lightgrey;
+  background-color: var(--ion-color-medium);;
   margin: 50px 20px 20px 20px;
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid var( --ion-color-light-contrast);
 }
 
 #viajes {
   margin: 0px 20px;
+}
+
+ion-item {
+  font-size: 18px;
 }
 
 #boton {

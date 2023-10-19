@@ -5,10 +5,22 @@
         <ion-back-button></ion-back-button>
       </ion-button>
     </ion-buttons> 
-    <ion-title>Buscar viaje</ion-title>
+    <ion-title>Ver viaje</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+<div id="contenedor">
+  <ion-list>
+    <ion-item *ngFor="let viaje of listaDeViajes">
+      <ion-label>
+        <h2>{{ viaje.destino }}</h2>
+        <p>Pasajeros: {{ viaje.pasajeros }}</p>
+        <p>Hora: {{ viaje.hora }}</p>
+        <p>Precio: ${{ viaje.precio }}</p>
+        <p>Conductor: {{ viaje.nombre }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</div>
 </ion-content>
