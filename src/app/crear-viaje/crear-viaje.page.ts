@@ -47,7 +47,7 @@ export class CrearViajePage implements OnInit {
 
   registro() {
     if (this.viajes.cantidadPasajeros.trim() === "" || this.viajes.destino.trim() === "" || this.viajes.horaSalida.trim() === "" ||
-      this.viajes.precio === "") {
+      this.viajes.precio === null || this.viajes.precio === "") {
         this.alertaVacio();
     } else {
       this.registroViaje.registroViaje(this.viajes.cantidadPasajeros, this.viajes.destino, this.viajes.horaSalida, this.viajes.precio,
