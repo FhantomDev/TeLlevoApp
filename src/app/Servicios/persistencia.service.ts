@@ -7,6 +7,7 @@ interface usuariosBase {
   password: string;
   nombre: string;
   apellido: string;
+  tipoUsuario: string;
 }
 
 @Injectable({
@@ -34,5 +35,13 @@ export class PersistenciaService {
       const usuarioExiste = users.find((us: usuariosBase) => us.username === username);
       const nombreCompleto = usuarioExiste?.nombre + " " + usuarioExiste?.apellido;
       return {nombreCompleto};
+    }
+
+
+    async recuperarTipoUsuario(username: string | null) {
+      const users: usuariosBase[] = (await this.auth.llamarBaseDatos().get('users')) || [];
+      const usuarioExiste = users.find((us: usuariosBase) => us.username === username);
+      const tipoUsuario = usuarioExiste?.tipoUsuario;
+      return {tipoUsuario};
     }
 }

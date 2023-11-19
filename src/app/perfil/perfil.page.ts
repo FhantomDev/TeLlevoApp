@@ -14,14 +14,21 @@ export class PerfilPage implements OnInit {
 
   username!: string | null;
   nombreCompleto!: string;
+  tipoUsuario!: string | undefined;
 
   ngOnInit() {
     this.recuperarDatos();
+    this.recuperarTipoUsuario();
   }
 
   async recuperarDatos() {
     this.username = localStorage.getItem("username");
     this.nombreCompleto = (await this.persistencia.recuperarDatos(this.username)).nombreCompleto;
+  }
+
+  async recuperarTipoUsuario() {
+    this.username = localStorage.getItem("username");
+    this.tipoUsuario = (await this.persistencia.recuperarTipoUsuario(this.username)).tipoUsuario;
   }
 
 }

@@ -13,7 +13,11 @@
   <div id="contenedor">
     <div class="mensaje">
       <ion-text>Nombre: {{nombreCompleto}}</ion-text><br>
-      <ion-text>Correo: {{username}}</ion-text>
+      <ion-text>Correo: {{username}}</ion-text><br>
+      <ion-text *ngIf="tipoUsuario === '01'; else tipo">Tipo de usuario: Conductor</ion-text>
     </div>
+    <ng-template #tipo>
+      <ion-text>Tipo de usuario: Pasajero</ion-text>
+    </ng-template>
   </div>
 </ion-content>

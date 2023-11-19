@@ -17,23 +17,22 @@
 #crear {
   display: flex;
   background-color: var(--ion-color-medium);
-  width: 140px;
+  width: 90%;
   padding: 20px;
-  margin-right: 20px;
   flex-direction: column;
   align-items: center;
-  border-radius: 10%;
+  border: 1px solid white;
   text-align: center;
 }
 
 #ver {
   display: flex;
   background-color: var(--ion-color-medium);
-  width: 140px;
+  width: 90%;
   padding: 20px;
   flex-direction: column;
   align-items: center;
-  border-radius: 10%;
+  border: 1px solid white;
   text-align: center;
 }
 

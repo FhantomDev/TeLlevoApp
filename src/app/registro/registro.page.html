@@ -11,23 +11,28 @@
 
 <ion-content [fullscreen]="true">
   <div id="contenedor">
-  <div>
-    <ion-input [(ngModel)]="usuarios.nombre" type="text" fill="solid" label="Nombre" labelPlacement="floating"
-      errorText="Dato invalido" ngModel required></ion-input>
-    <ion-input [(ngModel)]="usuarios.apellido" type="text" fill="solid" label="Apellido" labelPlacement="floating"
-      errorText="Dato invalido" ngModel required></ion-input>
-    <ion-input [(ngModel)]="usuarios.username" fill="solid" label="Correo" labelPlacement="floating"
-      helperText="Ingrese un correo valido" errorText="Correo invalido" ngModel required email></ion-input>
-    <ion-input [(ngModel)]="usuarios.password" type="password" fill="solid" label="Contraseña" labelPlacement="floating"
-      ngModel required></ion-input><br>
-      
-    <div id="boton">
-      <ion-button (click)="registro()">Registrar</ion-button>
+    <div>
+      <ion-input [(ngModel)]="usuarios.nombre" type="text" fill="solid" label="Nombre" labelPlacement="floating"
+        errorText="Dato invalido" ngModel required></ion-input>
+      <ion-input [(ngModel)]="usuarios.apellido" type="text" fill="solid" label="Apellido" labelPlacement="floating"
+        errorText="Dato invalido" ngModel required></ion-input>
+      <ion-input [(ngModel)]="usuarios.username" fill="solid" label="Correo" labelPlacement="floating"
+        errorText="Correo invalido" ngModel required email></ion-input>
+      <ion-input [(ngModel)]="usuarios.password" type="password" fill="solid" label="Contraseña"
+        labelPlacement="floating" ngModel required></ion-input>
+      <ion-select [(ngModel)]="usuarios.tipoUsuario" type="text" fill="solid" label="Tipo de usuario"
+        labelPlacement="floating" errorText="Dato invalido" ngModel required>
+        <ion-select-option value="01">Conductor</ion-select-option>
+        <ion-select-option value="02">Pasajero</ion-select-option>
+      </ion-select>
+
+      <div id="boton">
+        <ion-button (click)="registro()">Registrar</ion-button>
+      </div>
+
+      <div id="error">
+        <ion-text>{{mensaje}}</ion-text>
+      </div>
     </div>
-    
-    <div id="error">
-      <ion-text>{{mensaje}}</ion-text>
-    </div>
-  </div>
   </div>
 </ion-content>

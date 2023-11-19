@@ -16,16 +16,18 @@
     <ion-text>Bienvenido: {{nombreCompleto}}</ion-text>
   </div>
 </div>
-
+  
   <div class="principal">
-    <div id="crear" routerLink="/crear-viaje">
+    <div *ngIf="tipoUsuario === '01'; else pasajero" id="crear" routerLink="/crear-viaje">
       <ion-icon name="car"></ion-icon>
       <ion-text>Crear viaje</ion-text>
     </div>
+    <ng-template #pasajero>
     <div id="ver" routerLink="/buscar-viaje">
       <ion-icon name="man"></ion-icon>
       <ion-text>Ver viajes disponibles</ion-text>
     </div>
+    </ng-template>
   </div>
 
   <div id="titulo-viajes">

@@ -15,6 +15,7 @@ export class HomePage {
   //Declarar las variables indicando que no seran nulas
   username!: string | null;
   nombreCompleto!: string;
+  tipoUsuario!: string | undefined;
 
   public usuario = {
     user: "",
@@ -24,12 +25,18 @@ export class HomePage {
   ngOnInit() {
     //Usamos la función al cargar la pagina
     this.recuperarDatos();
+    this.recuperarTipoUsuario();
   }
   
   //Función donde se recupera el username y se la pasa a la función para recuperar los datos
   async recuperarDatos() {
     this.username = localStorage.getItem("username");
     this.nombreCompleto = (await this.persistencia.recuperarDatos(this.username)).nombreCompleto;
+  }
+
+  async recuperarTipoUsuario() {
+    this.username = localStorage.getItem("username");
+    this.tipoUsuario = (await this.persistencia.recuperarTipoUsuario(this.username)).tipoUsuario;
   }
 
 }

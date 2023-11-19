@@ -8,6 +8,7 @@ interface usuariosBase {
   password: string;
   nombre: string;
   apellido: string;
+  tipoUsuario: string;
 }
 
 interface viajesBase {
@@ -39,13 +40,13 @@ export class AutenticacionService {
   public activo!: Boolean;
 
   //Funcion de registro
-  async registro(username: string, password: string, nombre: string, apellido: string) {
+  async registro(username: string, password: string, nombre: string, apellido: string , tipoUsuario: string) {
     const users = await this.baseDatos?.get('users') || [];
     const existe = users.find((us: usuariosBase) => us.username === username && us.password === password);
     if (existe) {
       console.log("Usuario Existente")
     } else {
-      const nuevo: usuariosBase = { username, password, nombre, apellido };
+      const nuevo: usuariosBase = { username, password, nombre, apellido, tipoUsuario };
       users.push(nuevo);
       await this.baseDatos.set('users', users);
       console.log("Registro Exitoso")

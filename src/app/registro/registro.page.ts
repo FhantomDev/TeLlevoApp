@@ -21,7 +21,8 @@ export class RegistroPage implements OnInit {
     username: "",
     nombre: "",
     apellido: "",
-    password: ""
+    password: "",
+    tipoUsuario: ""
   }
 
   async alertaVacio() {
@@ -38,10 +39,10 @@ export class RegistroPage implements OnInit {
   //Falta agregar los campos nombre y apellido, la validacion y mensajes
   registro() {
     const validarEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (this.usuarios.username === "" || this.usuarios.nombre === "" || this.usuarios.apellido === "" || this.usuarios.password === ""){
+    if (this.usuarios.username === "" || this.usuarios.nombre === "" || this.usuarios.apellido === "" || this.usuarios.password === "" || this.usuarios.tipoUsuario === "") {
       this.alertaVacio();
     } else {
-      this.auth.registro(this.usuarios.username, this.usuarios.password, this.usuarios.nombre, this.usuarios.apellido);
+      this.auth.registro(this.usuarios.username, this.usuarios.password, this.usuarios.nombre, this.usuarios.apellido, this.usuarios.tipoUsuario);
       this.router.navigate(['/registro-exito'], { queryParams: { mensaje: '¡Registro exitoso!' } });
     }
   }
