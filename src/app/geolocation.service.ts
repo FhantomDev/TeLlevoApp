@@ -10,7 +10,7 @@ export class GeolocationService {
   constructor(private geo: Geolocation, private http: HttpClient) { }
 
   async getDireccion(lat: number, lng: number): Promise<string> {
-    const apiKey = 'AIzaSyBWWNwMhbVQ5yZ-OHlP7kNRVU-YQ1UGrU4';
+    const apiKey = '';
     const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
   
     try {
