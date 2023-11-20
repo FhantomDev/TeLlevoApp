@@ -19,6 +19,8 @@
         <ion-select-option value="3">3 pasajeros</ion-select-option>
         <ion-select-option value="4">4 pasajeros</ion-select-option>
       </ion-select>
+      <ion-input [(ngModel)]="viajes.lugarSalida" type="text" fill="solid" label="Lugar salida" labelPlacement="floating"
+        errorText="Dato invalido" ngModel required></ion-input>
       <ion-input [(ngModel)]="viajes.destino" type="text" fill="solid" label="Destino" labelPlacement="floating"
         errorText="Dato invalido" ngModel required></ion-input>
       <ion-input [(ngModel)]="viajes.horaSalida" type="time" fill="solid" label="Hora de salida"

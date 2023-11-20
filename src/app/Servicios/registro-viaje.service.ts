@@ -9,6 +9,7 @@ export interface viajesBase {
   username: string | null;
   pasajeros: string;
   destino: string;
+  salida: string;
   hora: string;
   precio: string;
   nombre: string;
@@ -38,15 +39,15 @@ export class RegistroViajeService {
   }
 
   //Registro del viaje
-  async registroViaje(pasajeros: string, destino: string, hora: string, precio: string, username: string | null, nombre: string) {
+  async registroViaje(pasajeros: string, salida: string, destino: string, hora: string, precio: string, username: string | null, nombre: string) {
     const viajes = await this.auth.llamarBaseDatos().get('viajes') || [];
-    const existe = viajes.find((us: viajesBase) => us.username === username && us.pasajeros === pasajeros && us.destino === destino
+    const existe = viajes.find((us: viajesBase) => us.username === username && us.salida === salida && us.pasajeros === pasajeros && us.destino === destino
       && us.hora === hora && us.precio === precio);
     if (existe) {
       console.log("Viaje existente")
       this.alertaExiste();
     } else {
-      const nuevo: viajesBase = { pasajeros, destino, hora, precio, username, nombre };
+      const nuevo: viajesBase = { pasajeros, salida, destino, hora, precio, username, nombre };
       viajes.push(nuevo);
       await this.auth.llamarBaseDatos().set('viajes', viajes);
       console.log("Viaje guardado")

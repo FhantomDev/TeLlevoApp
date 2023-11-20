@@ -16,16 +16,14 @@
     </div>
     <ng-template #siHayViajes>
       <div id="contenedor">
-        <ion-list>
-          <ion-item *ngFor="let viaje of listaDeViajes">
-            <ion-label>
-              <h2>{{ viaje.destino }}</h2>
-              <p>Pasajeros: {{ viaje.pasajeros }}</p>
-              <p>Hora: {{ viaje.hora }}</p>
-              <p>Precio: ${{ viaje.precio }}</p>
-              <p>Conductor: {{ viaje.nombre }}</p>
-            </ion-label>
-          </ion-item>
+        <ion-list *ngFor="let viaje of listaDeViajes">
+          <h2>{{ viaje.destino }}</h2>
+          <p>Lugar de salida: {{ viaje.salida }}</p>
+          <p>Pasajeros: {{ viaje.pasajeros }}</p>
+          <p>Hora: {{ viaje.hora }}</p>
+          <p>Precio: ${{ viaje.precio }}</p>
+          <p>Conductor: {{ viaje.nombre }}</p>
+        <hr/>
         </ion-list>
       </div>
     </ng-template>
