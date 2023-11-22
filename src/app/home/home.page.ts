@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AutenticacionService } from '../Servicios/autenticacion.service';
 import { PersistenciaService } from '../Servicios/persistencia.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { PersistenciaService } from '../Servicios/persistencia.service';
 })
 export class HomePage {
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private auth: AutenticacionService,
-    private persistencia: PersistenciaService) {}
+    private persistencia: PersistenciaService, private alertController: AlertController) {}
 
   //Declarar las variables indicando que no seran nulas
   username!: string | null;
@@ -39,4 +40,14 @@ export class HomePage {
     this.tipoUsuario = (await this.persistencia.recuperarTipoUsuario(this.username)).tipoUsuario;
   }
 
+  async alertaAyuda() {
+    const alerta = await this.alertController.create({
+      header: 'Aviso',
+      subHeader: 'No hay ayuda :(',
+      //message: 'This is an alert!',
+      buttons: ['OK'],
+    });
+
+    await alerta.present();
+  }
 }

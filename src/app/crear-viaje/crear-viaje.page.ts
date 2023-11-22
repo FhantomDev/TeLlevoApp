@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegistroViajeService } from '../Servicios/registro-viaje.service';
 import { GeolocationService } from '../geolocation.service';
+
 @Component({
   selector: 'app-crear-viaje',
   templateUrl: './crear-viaje.page.html',
@@ -37,7 +38,7 @@ export class CrearViajePage implements OnInit {
       this.direccionActual = await this.geolocationService.obtenerDireccionActual();
       this.viajes.lugarSalida = this.direccionActual;
     } catch (error) {
-      console.error('Error al obtener la dirección desde la página:', error);
+      console.error('Error al obtener la dirección desde ', error);
     }
   }
 

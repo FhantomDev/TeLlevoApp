@@ -27,10 +27,15 @@
         labelPlacement="floating" errorText="Dato invalido" ngModel required></ion-input>
       <ion-input [(ngModel)]="viajes.precio" type="number" fill="solid" label="Precio del viaje"
         labelPlacement="floating" errorText="Dato invalido" ngModel required></ion-input>
+      <div id="map">
+
+      </div>
 
       <div id="boton">
         <ion-button (click)="registro()">Crear viaje</ion-button>
       </div>
     </div>
   </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWWNwMhbVQ5yZ-OHlP7kNRVU-YQ1UGrU4&libraries=places" defer></script>
+<script src="path/to/your/google-maps-script.js" defer></script>
 </ion-content>

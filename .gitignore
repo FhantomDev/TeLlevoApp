@@ -22,6 +22,9 @@ log.txt
 /www
 /platforms
 /plugins
+www/
+android/
+/src/app/geolocation.service.ts
 
 # Compiled output
 /dist
@@ -66,3 +69,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+

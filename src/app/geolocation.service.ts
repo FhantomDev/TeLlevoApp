@@ -10,7 +10,7 @@ export class GeolocationService {
   constructor(private geo: Geolocation, private http: HttpClient) { }
 
   async getDireccion(lat: number, lng: number): Promise<string> {
-    const apiKey = 'AIzaSyBWWNwMhbVQ5yZ-OHlP7kNRVU-YQ1UGrU4';
+    const apiKey = '';
     const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
   
     try {
@@ -26,13 +26,16 @@ export class GeolocationService {
 
   async obtenerDireccionActual() {
     try {
-      const position = await Geolocation.getCurrentPosition();
+      const position = await Geolocation.getCurrentPosition({
+        enableHighAccuracy: true,
+        timeout: 10000,
+      });
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
   
       const direccion = await this.getDireccion(lat, lng);
       console.log('Dirección actual:', direccion);
-      return direccion; // Ahora devuelve la dirección
+      return direccion;
     } catch (error) {
       console.error('Error al obtener la posición:', error);
       throw error;

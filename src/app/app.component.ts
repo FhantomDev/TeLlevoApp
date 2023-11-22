@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { AutenticacionService } from './Servicios/autenticacion.service';
+import { GeolocationService } from './geolocation.service';
 
 
 @Component({
@@ -11,13 +12,13 @@ import { AutenticacionService } from './Servicios/autenticacion.service';
 })
 export class AppComponent {
   constructor(private storage: Storage, private platform: Platform, private auth: AutenticacionService,) {
-this.iniciarStorage();
-}
+    this.iniciarStorage();
+  }
 
-latitud: number | undefined;
-longitud: number | undefined;
+  latitud: number | undefined;
+  longitud: number | undefined;
 
-   iniciarStorage() {
+  iniciarStorage() {
     this.platform.ready().then(async () => {
       await this.storage.create();
     })
