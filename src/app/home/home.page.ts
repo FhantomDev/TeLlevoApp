@@ -3,6 +3,8 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AutenticacionService } from '../Servicios/autenticacion.service';
 import { PersistenciaService } from '../Servicios/persistencia.service';
 import { AlertController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private auth: AutenticacionService,
-    private persistencia: PersistenciaService, private alertController: AlertController) {}
+    private persistencia: PersistenciaService, private alertController: AlertController, private platform: Platform
+  ) { }
 
   //Declarar las variables indicando que no seran nulas
   username!: string | null;
@@ -28,7 +31,7 @@ export class HomePage {
     this.recuperarDatos();
     this.recuperarTipoUsuario();
   }
-  
+
   //Función donde se recupera el username y se la pasa a la función para recuperar los datos
   async recuperarDatos() {
     this.username = localStorage.getItem("username");
@@ -50,4 +53,5 @@ export class HomePage {
 
     await alerta.present();
   }
+
 }
