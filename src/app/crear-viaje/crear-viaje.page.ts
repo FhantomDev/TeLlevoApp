@@ -14,11 +14,12 @@ import { GeolocationService } from '../geolocation.service';
 export class CrearViajePage implements OnInit {
 
   constructor(private auth: AutenticacionService, private persistencia: PersistenciaService, private alertController: AlertController,
-    private router: Router, private registroViaje: RegistroViajeService, private geolocationService: GeolocationService ) { }
+    private router: Router, private registroViaje: RegistroViajeService, private geolocationService: GeolocationService) { }
 
   username!: string | null;
   nombreCompleto!: string;
   direccionActual!: string;
+
 
   viajes = {
     cantidadPasajeros: "",
@@ -31,6 +32,7 @@ export class CrearViajePage implements OnInit {
   ngOnInit() {
     this.recuperarDatos();
     this.obtenerDireccion();
+    this.loadMap();
   }
 
   async obtenerDireccion() {
@@ -62,11 +64,15 @@ export class CrearViajePage implements OnInit {
   registro() {
     if (this.viajes.cantidadPasajeros.trim() === "" || this.viajes.lugarSalida.trim() === "" || this.viajes.destino.trim() === "" || this.viajes.horaSalida.trim() === "" ||
       this.viajes.precio === null || this.viajes.precio === "") {
-        this.alertaVacio();
+      this.alertaVacio();
     } else {
       this.registroViaje.registroViaje(this.viajes.cantidadPasajeros, this.viajes.lugarSalida, this.viajes.destino, this.viajes.horaSalida, this.viajes.precio,
         this.username, this.nombreCompleto)
     }
+  }
+
+  loadMap() {
+    this.geolocationService.loadMap();
   }
 
 }

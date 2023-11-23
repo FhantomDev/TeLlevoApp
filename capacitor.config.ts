@@ -6,6 +6,11 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'https'
+  },
+  plugins: {
+    GoogleMaps: {
+      "key": "AIzaSyBWWNwMhbVQ5yZ-OHlP7kNRVU-YQ1UGrU4"
+    }
   }
 };
 
