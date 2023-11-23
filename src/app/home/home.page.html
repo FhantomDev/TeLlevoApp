@@ -16,7 +16,7 @@
     <ion-text>Bienvenido: {{nombreCompleto}}</ion-text>
   </div>
 </div>
-  
+
   <div class="principal">
     <div *ngIf="tipoUsuario === '01'; else pasajero" id="crear" routerLink="/crear-viaje">
       <ion-icon name="car"></ion-icon>
@@ -30,16 +30,6 @@
     </ng-template>
   </div>
 
-  <div id="titulo-viajes">
-    <ion-text>Viajes anteriores</ion-text>
-  </div>
-  
-  <div id="viajes">
-    <ion-list>
-      <ion-item><ion-icon name="pin"></ion-icon>San francisco 1192, Santiago</ion-item>
-      <ion-item><ion-icon name="pin"></ion-icon>Miraflores 945, Pudahuel</ion-item>
-    </ion-list>
-  </div>
 
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
@@ -52,3 +42,6 @@
     </button>
   </mat-menu>
 </ion-content>
+<ion-footer>
+  <ion-img id="logo" #logo src="assets/Logo_duoc.png" alt="DuocUC"></ion-img>
+</ion-footer>
